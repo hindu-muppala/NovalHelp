@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariene Analytics </title>
+        <!-- Leaflet CSS and JavaScript -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+   
+    <style>
+         /* Basic Reset */
+         * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+
+        #map {
+            height: 100vh;
+            width: 75%;
+        }
+
+        #sidebar {
+            width: 25%;
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #sidebar h1 {
+            font-size: 24px;
+            color: #ecf0f1;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        #chatbot-container {
+            position: fixed;
+            right: 20px;  
+            bottom: 20px;
+            width: 300px;
+            height: 400px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Header style */
+        #chatbot-header {
+            background-color: #604caf;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Chat messages area */
+        #chatbot-messages {
+            flex-grow: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        /* Input area style */
+        #chatbot-input-container {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        #chatbot-input {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #chatbot-send-button {
+            background-color: #37ccea;
+            color: white;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<div id="chatbot-container">
+    <div id="chatbot-header">Custom Information</div>
+    <div id="chatbot-messages">
+        <!-- Chat messages will go here -->
+    </div>
+    <div id="chatbot-input-container">
+        <input type="text" id="chatbot-input" placeholder="Type a message...">
+        <button id="chatbot-send-button">Send</button>
+    </div>
+</div>
+
+<script>
+    // Initialize the map
+    var map = L.map('map').setView([37.7749, -122.4194], 5);
+
+    // Add a tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Function to add markers
+    function addMarker(latitude, longitude, text, object, time) {
+        const marker = L.marker([latitude, longitude]).addTo(map);
+        marker.bindPopup(`<strong>${text}</strong><br>${object}<br>Time: ${time}`).openPopup();
+    }
+    document.getElementById('chatbot-send-button').addEventListener('click', function() {
+        // Get the input value
+        event.preventDefault();
+        const query = document.getElementById('chatbot-input').value;
+
+        console.log(query)
+        const url = `http://127.0.0.1:5000/logCustom?query=${encodeURIComponent(query)}`;
+    
+        // Send the GET request
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text(); 
+            })
+            .then(data => {
+                console.log(data); // Handle the response data as needed
+                // Optionally, you can clear the input after sending
+                document.getElementById('chatbot-input').value = '';
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    });
+
+</script>
+</body>
+</html>
