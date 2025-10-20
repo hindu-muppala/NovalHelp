@@ -45,6 +45,3 @@ For details on the dataset and surveillance zone definitions, refer to the Markd
 
 ***
 
-[9](https://github.com/hindu-muppala/NovalHelp/blob/main/NavyAnalytics/manage.py)
-[10](https://github.com/hindu-muppala/NovalHelp/tree/main)
-[11](https://github.com/hindu-muppala/NovalHelp/tree/main/Navy)
