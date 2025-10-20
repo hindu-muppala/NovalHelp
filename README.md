@@ -41,7 +41,7 @@ The **Navy** folder is a core part of the NovalHelp project, focused on maritime
 
 ## Notes
 
-For details on the dataset and surveillance zone definitions, refer to the Markdown files in the root (`maritime-dataset-v1.md`, etc.) for information on patrol logs and geographical zones.[10]
+For details on the dataset and surveillance zone definitions, refer to the Markdown files in the root (`maritime-dataset-v1.md`, etc.) for information on patrol logs and geographical zones.
 
 ***
 
