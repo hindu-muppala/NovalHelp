@@ -10,23 +10,23 @@ The **Navy** folder is a core part of the NovalHelp project, focused on maritime
   Main directory, containing modules and scripts for maritime analytics and file processing.
 
   - **novelHack_Data/novelHack/**  
-    Data files and scripts related to the novelHack project components for advanced analytics and prototyping.[1][2]
+    Data files and scripts related to the novelHack project components for advanced analytics and prototyping.
 
   - **pdf_files/**  
-    Collection of maritime-related PDF documents, such as "indian-navy-air-defense-exercise-areas_01-25.md.pdf", containing real-world surveillance data and military zone information.[3]
+    Collection of maritime-related PDF documents, such as "indian-navy-air-defense-exercise-areas_01-25.md.pdf", containing real-world surveillance data and military zone information.
 
   - **pdf_to_md/**  
-    Scripts and outputs for converting PDF files to Markdown, simplifying downstream data analysis and processing tasks.[4]
+    Scripts and outputs for converting PDF files to Markdown, simplifying downstream data analysis and processing tasks.
 
   - **set.py**  
-    Python script for custom data operations or utility functions relating to the contents of this folder.[5]
+    Python script for custom data operations or utility functions relating to the contents of this folder.
 
   - **NavyAnalytics/**  
     Contains source code for Django-based analytics tools, including:
     - NavyAnalytics (project settings)
     - mapApi (Django app)
     - db.sqlite3 (database)
-    - manage.py (management script)[6][7][8][9]
+    - manage.py (management script)
 
 ## Key Data Files
 
